@@ -4,5 +4,5 @@ import Lib
 
 main :: IO ()
 main = do
-  res <- getAccredidations
+  res <- getAccredidationsSSL
   return ()

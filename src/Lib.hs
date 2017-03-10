@@ -1,8 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Lib
-    ( getAccredidations
-    , getAccredidationsSSL
+    ( getAccredidationsSSL
+    , getMeSSL
     ) where
 
 import           Control.Applicative
@@ -53,22 +53,30 @@ instance FromJSON Accredidations where
 instance Receivable Accredidations where
   receive = useFromJSON
 
-angelList :: Builder
-angelList = basicBuilder "Angel.co API" "http://api.angel.co"
-
 angelListSSL :: Builder
 angelListSSL = basicBuilder "Angel.co API" "https://api.angel.co"
+
+accessToken :: Text
+accessToken = "xxx"
 
 accredidationsRoute :: Route
 accredidationsRoute = Route { urlPieces = [ "accredidations"
                                           ]
-                            , urlParams = [ "access_token" =. ("XXX" :: Text)
+                            , urlParams = [ "access_token" =. accessToken
                                           ]
                             , httpMethod = "GET"
                             }
 
-getAccredidations :: IO (Either (APIError ()) Accredidations)
-getAccredidations = execAPI angelList () $ runRoute accredidationsRoute
-
 getAccredidationsSSL :: IO (Either (APIError ()) Accredidations)
 getAccredidationsSSL = execAPI angelListSSL () $ runRoute accredidationsRoute
+
+meRoute :: Route
+meRoute = Route { urlPieces = [ "me"
+                              ]
+                , urlParams = [ "access_token" =. accessToken
+                              ]
+                              , httpMethod = "GET"
+                }
+
+getMeSSL :: IO (Either (APIError ()) Accredidations)
+getMeSSL = execAPI angelListSSL () $ runRoute meRoute
