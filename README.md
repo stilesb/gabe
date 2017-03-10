@@ -1,2 +1,13 @@
 # gabe
-Haskell angelist.co API wrapper 
+
+*Haskell angel.co API wrapper*
+
+## Setup
+
+**Requirements**
+
+* Stack
+
+**Build**
+
+`make`
