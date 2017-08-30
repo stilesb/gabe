@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/stilesb/gabe.svg?branch=master)](https://travis-ci.org/stilesb/gabe)
 
-# gabe
+# hangelco
 
-*Haskell angel.co API wrapper*
+**Haskell angel.co API wrapper**
 
 ## Setup
 
